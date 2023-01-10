@@ -1,0 +1,161 @@
+- colores
+- unidades de medida
+
+manipulacion de imagenes
+diseño responsivo
+css
+flexbox vs gridlayout vs float
+unidades de medida (color y tamaño)
+selectores
+
+menos especifico
+/*comentario*/
+*{}
+p {property:value;property:value}
+.class {}
+#id {}
+style=""
+mas especifico
+
+uno, dos, tres {}
+
+//seudoselector:
+
+div.clase.clase2 >> <div class="clase clase2"> ___YYY___
+
+div, otro {} >> div ó otro ___ÓÓÓ___
+
+ul li {} >> los li dentro de los ul ___Anidado___ / si el elemento de la derecha esta dentro de la izquierda. ignora la profundidad. x y == x Z y
+
+span > b >> si B esta inmediatamente anidado en SPAN
+
+li.red ~ li >> todos los li hermanos (en el mismo nivel de anidamiento) despues de li.red <li class="red"><LI><LI><LI><LI>
+
+li.red + li >> solo el siguiente li hermano (en el mismo nivel de anidamiento) despues de li.red <li class="red"><LI>
+
+//seudoclases = como el usuario interactua con la pagina. siempre usan :
+
+li:hover >> pasar el mouse encima
+:focus >> enfocado
+:required >> elementos con el atributo required
+:checked >> cuando un check a sido seleccionado por el usuario
+:disabled >> elementos con el atributo disabled
+
+para link >> :link :visited
+
+en que ubicacion estan los elementos de la pagina? (aun seudoclases)
+
+li:first-child >> el primer elemento
+li:last-child >> ultimo elemento
+li:nth-child(3) >> elige el tercer elemento de arriba hacia abajo
+(2n) >> los pares
+(2n-1) >> los impares
+(3n) >> cada 3
+li:nth-last-child(3) >> elige el tercer elemento desde abajo hacia arriba
+span:only-child >> si el elemento esta solo (es el unico) dentro de un contenedor. si hay otro elemento a continuacion del span no funciona (sea o no span)
+span:first-of-type >> el primer elemento de este tipo dentro de un contenedor
+span:last-of-type >> el ultimo elemento de este tipo dentro de un contenedor
+li:nth-of-type(2) >> elige el segundo li
+li:nth-last-of-type(2) >> elige el segundo li desde abajo hacia arriba
+span:only-of-type >> elige el unico span del contenedor
+li:not(.green) >> revierte la seleccion de lo que le pongas dentro (todo lo que no sea .green)
+
+// seudoelementos == usan ::
+
+before y after agregan algo con un estilo y contenido al principio y final de la seleccion
+VER EL OTRO VIDEO!!
+
+//selector de atributos
+
+<div data-red="hola">
+[data-red="hola"]{atributos}
+
+FALTA mas del selector de atributos
+
+/////////////floatlayout////
+
+float: left / right
+visibility: hidden; >> no lo muestra pero el elemento sigue ocupando espacio
+display: none; >> no ocupa espacio en el render
+
+//////flexbox////////
+
+>>consta de un contenedor y de los elementos dentro del contenedor
+
+contenedor >> display: flex; >> convierte al div en un contenedor flexbox
+>>> cont justify-content:
+default:flex-start(se agrupan a la derecha ([1][2][3]   ))
+center(todos quedan juntitos en el centro( [1][2][3] ))
+space-between (ocupan todo el espacio sin agrandar los itemes y pegandose a los bordes ([1]  [2]  [3]))
+space-around (lo mismo de antes pero sin pegarse a los bordes ( [1]  [2]  [3] ))
+
+>>> align-items:(cuando los itemes estan ordenados a lo largo, indica como se distribuyen verticalmente)
+stretch(itemes pegado arriba y abajo usando toda la altura del contenedor)
+([ ])
+(|1|)
+([ ])
+flex-start(pegado arriba y baja hasta el largo maximo del item, usualmente queda espacio abajo)
+([1])
+(   )
+(   )
+flex-end(pegado abajo y sube hasta el largo maximo del item, usualmente queda espacio arriba)
+(   )
+(   )
+([1])
+center(alinea el centro vertical del item con el centro vertical del contenedor)
+(   [ ])
+([1]|2|)
+(   [ ])
+
+>>> align-content(configura la presentacion de itemes multilinea(cuando un conjunto de vid es desplazado hacia otra linea dentro del mismo contenedor))
+
+>>> flex-wrap(define si es que los itemes se vuelven multilinea cuando se reduce el ancho del contenedor)
+no-wrap(por defecto)los itemes siguen en la misma linea y solo reducen su ancho
+wrap: si no hay suficiente espacio, los itemes se desplazan a una nueva linea
+
+//////////////////
+
+flex-direction:(row es por defecto) column: los itemes se ordenan en columnas
+([1])
+([2])
+([3])
+
+CUANDO SE CAMBIA LA DIRECCION EL FLEX A COLUMN SE PUEDEN SEGUIR APLICANDO LOS MISMOS PARAMETROS QUE EN ROW, SOLO QUE SE APLICARAN EN LOS EJES AL REVES
+
+//////////PARAMETROS QUE SE USAN DENTRO LOS ITEMES INTERNOS DEL CONTENEDOR, PARA DEFINIR EL COMPORTAMIENTO DE CADA ITEM DE MANERA INDEPENDIENTE A LOS OTROS ITEMES//////////
+
+flex-shrink:(0>1>>X):la proporcion en la que se reduce cuando se queda sin espacio. un valor 0 implica que el item no cambia su tamaño
+flex-grow:(0>1>>X): la proporcion en la que se agranda cuando sobra espacio en el contenedor
+
+flex grow and shrink funcionan en base al tamaño inicial del item en pixeles, asi que un aumento de 2 no necesariamente implica que se aumentara el doble ya que ese doble esta influenciado por el tamaño preliminar del componente que se esta aumentando
+
+flex-basis:(0px>> xpx): shrink y grow usaran este tamaño de pixeles en lugar del original del item. un valor de 0PX aumentara o decrementara los valores exactamente por la cantidad indicada
+
+align-self:(center/stretch/flex-end/etc)sobreescribe align-content para el item particular
+
+order(1>2>>X)ordena la posicion de los itemes. idealmente no deberia ocuparse ya que aplicar tab para mover sigue segun el orden del html, no de este valor
+
+flex: valor valor valor : shortcut para resumir shrink grow y basis
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+>>media query: es la manera en que se despliega la pagina en base al ancho en pixeles
+
+html debe tener esto en head para habilitar media query: <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+seleccionar clases que empiezan con col-n  >>>> [class*="col-"]
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {...}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {...}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {...}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {...}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {...}

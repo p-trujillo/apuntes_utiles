@@ -1,0 +1,44 @@
+!+tab= genera todo el html basico
+link:css + tab = referencia estilo
+div.clase#id>algodentro>lagodentro*cantidad>algo[atributo="valor"]{texto dentro del elemento $==(numero sucesivo)} +tab
+
+scritp:src = para poner java script
+
+lorem5= cinco palabras
+
+alt+z= ajuste de linea
+ctrl+/ = comentar linea
+shift+alt+abajo= duplicar hacia abajo
+
+head>
+css = pone el estilo
+title = pone el titulo
+favicon = pone el favicon
+
+id= una sola vez
+class= muchas veces
+
+body
+<!--(comentarios) = comentarios para tu codigo
+div(bolsillo para agrupar secciones para referenciar con id o clase) = bolsillo donde metes secciones de codigo
+span(bolsillo dentro del parafo para referenciar con id o clase) = bolsillo "en la linea" donde marcas secciones importantes
+h1 a h6(titulo) = pones los titulos
+a(hipervinculo) = hipervinculo a cualquier lado (id=c4 - href="#c4" salta dentro del mismo documento)
+img(imagen) = colocas una imagen en el documento
+p(parrafo) = crea un parrafo <pre> conserva los espacios
+
+table(tabla) = crea tabla
+ul(lista) = crea lista
+
+form(formularios)= formularios con los que manipular informacion
+
+manipulacion de imagenes
+diseño responsivo
+css
+flexbox vs gridlayout vs float
+unidades de medida (color y tamaño)
+selectores
+
+experimentar con todos ellos mediante tutoriales
+
+una vez que termine con eso probar bootstrap

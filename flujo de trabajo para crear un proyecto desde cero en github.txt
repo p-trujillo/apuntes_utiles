@@ -1,0 +1,84 @@
+flujo de trabajo para crear un proyecto desde cero en github--------------
+
+garabatea en algun lugar mas o menos lo que tienes en mente (un diseño rapido de lo que quieres que contenga, como se veria en la UI, y como ordenaras los archivos)
+
+crea la carpeta
+ingresa a la carpeta
+git init >> inicia el repositorio
+git config --global user.name "x" >> set user.name
+git config --global user.name >> get user.name
+git config --global user.mail "x" >> set user.mail
+git config --global user.mail >> get user.mail
+crear dentro de la carpeta archivo .gitignore
+crea el archivo README.md
+escribir dentro de gitignore todos los archivos que no quieres respaldar con git
+crea los archivos que necesites
+
+flujo de trabajo si vas a clonar--------------------------------
+
+git clone "url" >> clona el repositorio en tu carpeta particular
+
+flujo de trabajo para trabajar local
+
+git add * >> agrega y actualiza localmente el estado todos los archivos al conjunto de archivos a los que se le dara seguimiento. si creas un cambio tienes que volver a usar el comando
+git add archivo.txt >> agrega el archivo particular
+git commit -m "mensaje de commit" >> crea un snapshot de tu rama actual. tienes que documentar en que se basa tu actualizacion del codigo
+git status >> devuelve el estado actual de tus archivos en relacion a las actualizaciones
+git diff >> muestra las diferencias actuales de tu archivo en comparacion a tu ultimo snapshot
+
+git commit -a -m "mensaje commit" >> agrega todos los archivos y realiza el snapshot de una sola vez
+
+git rm archivo.txt >> si ya hicite commit, este comando borra el archivo de tu sistema de archivos y del seguimiento, a efectos practicos eliminas el archivo de tu proyecto (talves sea mas simple ponerlo en .gitignore y luego eliminarlo cuando quieras?). si lo modificaste necesitas el parametro -f
+
+git mv "original" "nuevo" >> cambia el nombre de un archivo
+
+git log >> historial de commit a lo largo del tiempo. tiene muchas opciones sobre como mostrar la informacion
+
+-------------------
+
+git commit --amend >> enmiendo. hace el commit encima de tu commit anterior y lo reemplaza. sirve si hiciste el commit prematuramente y quieres sobreescribirlo con un commit que si tiene proposito. la idea es evitar tener exceso de commit que no aportan en nada y solo agregan conplejidad, asi que si el commit anterior fue tonto, con el amend lo reemplazas con la version actual, y el commit anterior queda desaparece y es reemplazado por la nueva version
+
+git reset HEAD "file.txt" / git restore --staged "file.txt">> deshace el "git add file.txt" siempre y cuando no hayas hecho commit aun. no deshace los cambios que hayas hecho actualmente al archivo en tu maquina (no pierdes nada de lo escrito en tu editor de texto)
+
+git restore "file.txt" >> PUEDES PERDER INFORMACION! reemplaza el archivo actual con el del ultimo commit, pierdes lo que hayas trabajado del archivo que no le hayas hecho commit
+
+git checkout -- "file.txt" >> PUEDES PERDER INFORMACION! restaura el archivo a su estado a como estaba en el ultimo add o en el ultimo commit. se pierde la informacion
+
+SIEMPRE PUEDES RECUPERAR TODO LO QUE HAS HECHO COMMIT!! SI NO LE HAS HECHO COMMIT NO SE PUEDE ASEGURAR
+
+----------- TRABAJAR CON REPO REMOTOS------------
+git remote >> devuelve el nombre del remoto con el que estas trabajando
+git remote show "nombre/origin" >> te devuelve la url del remoto y otra info util
+git remote rename "nombre/origin" "otro nombre" >> cambia el nombre del remoto
+git remote remove "nombre/origin" >> remueve la referencia al remoto en tu equipo
+
+git remote add "nombre/origin" "url" >> agrega repositorio remoto con nombre. usualmente se usa nombre origin
+
+PARA BAJAR LA INFO DEL REMOTO
+
+git fetch "nombre/origin" >> solo descarga la info
+git pull "nombre/origin" >> la descarga y la mezcla con la tuya (merge)
+
+PARA SUBIR TU INFO AL REMOTO
+
+git push "nombre/origin" "branch" >> sube los cambios al servidor en la rama especificada. la rama mas usual el master o main
+
+----------- PONER CHECKPOINT/BOOKMARK EN FORMA DE V0.X A ALGUN COMMIT---
+
+git tag >> lista los tag
+
+git show "nombretag" >> muestra tag especifico
+
+git tag -a v1.4 -m "mi mensaje" >> crea un tag anotado con mensaje
+
+git tag v0.02 >> tag liviano, nada especial
+
+git log --pretty=oneline ///// git tag -a v1.2 "checksum7primeros" -m "mi mensaje">> le pone un tag a un commit antiguo
+
+git push origin --tags >> sube todos tus tag al remoto
+
+git tag -d "nombretag" >> borra tag local
+
+git push origin --delete "nombretag" >> borra el tag de tu repositorio
+
+git checkout -b "nombrederama" "nombretag" >> regresa a una version antigua y crea una nueva rama para trabajar desde esa version antigua. si no se crea una rama aparte, los commit solo se pueden acceder por el checksum
